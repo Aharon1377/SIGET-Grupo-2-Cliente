@@ -14,6 +14,7 @@ script:
   - npm run build
 
 deploy: &heroku
+        skip_cleanup: true
         provider: heroku
         app: siget-equipo2-cliente
         api_key: 18562f60-1231-4327-8b42-88518f1e5dde
