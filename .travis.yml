@@ -5,9 +5,8 @@ node_js:
 addons:
   sonarcloud:
     organization: "gestiontareas"
-    token:
-      secure: "bVMhjgzRHobAuSg0bhSrKNZu2GVWsQ1LShaLZXOyUxz5w85rn5eNirVFZEoCi3gfNFOpJch3OVxyuly9GdvyhP205vjnB4tjjXJ/VXsN7Ed3RCpAWBZ/OI9zltUD81fCqCf/PEENR/YuyEcAmTqT/8unfRIkn8ebUJQ1Xu8oCc78gu8j8XfHuQTWwzdVCyPYfhtLRhl76FIX6/P7Ze4+4RZzJycTlOykDATUkGIm+B0mqWqFT3r54BC/41r0VCGDXz/wvVf9PY/45Fo6YMH6zO6YQruavWkVzuXblfEMU4Rr4DEhVC4LqvNnO+KqTsGyXiSHJ0cUAbEjPCTnJ4vivliH/f3V2NV2n96rfzUYaKur67UvHJKTD1SNDKH55Pn1ud+mnlr3ky/bt2A7eZ8M7ydAWtfV6jWgnheH9O2EasznqjAUJHldGrRraj/5Hy2V+TmsikxL/Q9Ri3jnuw4wQRApOgOJEUZ9ikql7i1sUOX9jL/ZFn53h1GN2a4+jCn2xyc/Vi5F1+ddnghLT0Klua2MxPJEPhr2H1ExEhfijUNfYTpfbQoCQynw83EQeB0XvWgejn0c8XIWfjAvwyMPz/nho3GkxBdy3epgY2Lv+ha2hu8QLFpWGPgMUDiUyGGN482A6WUtyN4xol8YJCitHhs7fjvQOhGKlkK8AbTxjKU="
-      
+    token: "7d1ea67997fbac456c84a081d0af7096e8645541"
+     
 install:
   - npm install
 
@@ -21,6 +20,3 @@ deploy: &heroku
 
 server:
         port: $PORT
-
-before_install:
-  - chmod +x mvnw
