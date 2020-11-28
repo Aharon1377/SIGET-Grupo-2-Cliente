@@ -1,1 +1,1 @@
-web: node main.ts --server.port=$PORT
+web: node server.js --server.port=$PORT
