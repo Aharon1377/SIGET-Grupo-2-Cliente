@@ -139,7 +139,8 @@ export class VerReunionesComponent implements OnInit {
     }else{
       for (let i = 0; i < this.reuniones.length; i++){
         if(this.reuniones[i].temas==clickInfo.event.title){
-          var convo = this.reuniones[i].convocante  
+          var convo = this.reuniones[i].convocante
+          var url = this.reuniones[i].url  
           var assis = this.reuniones[i].asistentes
           var desc = this.reuniones[i].descripcion
           var fechainici = this.reuniones[i].horaInicio
@@ -152,6 +153,7 @@ export class VerReunionesComponent implements OnInit {
       +"Fecha y hora de final: " +fechafinal+"\n"
       +"Convocante: "+convo+"\n"
       +"Assistentes: "+assis+"\n"
+      +"URL: "+url+"\n"
       +"Descripcion: "+desc)
     }
     
