@@ -13,6 +13,7 @@ import { UsuarioService } from '../services/usuario.service';
 export class LoginComponent {
   email: string;
   password: string;
+  roleID: string;
 
   constructor(private servicioUsuario: UsuarioService, public router: Router,) {}
   invalid = false;
@@ -27,6 +28,7 @@ export class LoginComponent {
     const usuario: UsuarioDto = {
       username: this.email,
       password: this.password,
+      roleID: this.roleID,
       nombre: "", 
       apellidos: "", 
       email : "", 
@@ -43,6 +45,15 @@ export class LoginComponent {
       },
       complete: () => (this.updateAddress()),
     });
+    //QUEDARIA DIFERENCIAR QUE PONER EN CADA VISTA 
+    if(this.roleID=="1"){
+      this.router.navigate(['vistaAdmin'])
+    }else if(this.roleID=="2"){
+      this.router.navigate(['vistaUsuarioPrivilegiado'])
+    }else{
+      this.router.navigate(['vistaUsuario'])
+    }
+      
     
   }
   

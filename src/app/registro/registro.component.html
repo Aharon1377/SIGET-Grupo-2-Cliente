@@ -45,6 +45,15 @@
             <label>Telefono:</label>
             <input type="telefono" [(ngModel)]="telefono" name="telefono" placeholder="Telefono" required="telefono" />
             <br>
+            
+            <label for="Rolsignup" [(ngModel)]="rol">Tu Rol </label>
+            <div [(ngModel)]="rol_div">
+             <select [(ngModel)]="roleID">
+                <option value="ADMIN">ADMIN</option>
+                <option value="USUARIO">USUARIO</option>
+                <option value="USUARIOCONPRIVILEGIOS">USUARIO CON PRIVILEGIOS</option>
+             </select>
+            </div>
 
 
             <div>

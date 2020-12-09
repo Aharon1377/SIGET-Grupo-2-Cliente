@@ -12,6 +12,7 @@ export class RegistroComponent implements OnInit {
 
     username: string;
     password: string;
+    roleID: string;
     nombre: string;
     apellidos: string;
     email: string;
@@ -31,6 +32,7 @@ export class RegistroComponent implements OnInit {
         const usuario: UsuarioDto = {
             username: this.username,
             password: this.password,
+            roleID: this.roleID,
             nombre: this.nombre,
             apellidos: this.apellidos,
             email: this.email,
