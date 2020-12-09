@@ -28,9 +28,10 @@ export class VerReunionesComponent implements OnInit {
   calendarVisible: boolean;
 
   ngOnInit(): void {
-
-    this.reunionService
-     .getByAsistentes(localStorage.getItem("name"))
+    //VER COMO METERTE SEGUN EL ROL
+    if(1){
+      this.reunionService
+     .getByAdmin()
      .subscribe({
       next: (reunionesReceived: ReunionDto[]) => {
         this.reuniones = reunionesReceived;
@@ -42,6 +43,21 @@ export class VerReunionesComponent implements OnInit {
       complete: () => (this.updateCalendar()),
     });
 
+    }else{
+      this.reunionService
+     .getByAsistentes(localStorage.getItem("name"), localStorage.getItem("rol"))
+     .subscribe({
+      next: (reunionesReceived: ReunionDto[]) => {
+        this.reuniones = reunionesReceived;
+        console.log(this.reuniones);
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => (this.updateCalendar()),
+    });
+    }
+    
     
   }
   

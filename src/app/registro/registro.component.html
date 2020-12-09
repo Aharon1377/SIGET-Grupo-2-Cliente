@@ -28,6 +28,14 @@
             <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required="password" />
             <br>
 
+            <label for="Rolsignup" [(ngModel)]="roleID">Tu Rol </label>
+            <div [(ngModel)]="roleID">
+             <select [(ngModel)]="roleID">
+                <option value="1">ADMIN</option>
+                <option value="3">USUARIO</option>
+                <option value="2">USUARIO CON PRIVILEGIOS</option>
+             </select>
+            </div>
 
             <label>Nombre:</label>
             <input type="nombre" [(ngModel)]="nombre" name="nombre" placeholder="Nombre" required="nombre" />
@@ -45,16 +53,6 @@
             <label>Telefono:</label>
             <input type="telefono" [(ngModel)]="telefono" name="telefono" placeholder="Telefono" required="telefono" />
             <br>
-            
-            <label for="Rolsignup" [(ngModel)]="rol">Tu Rol </label>
-            <div [(ngModel)]="rol_div">
-             <select [(ngModel)]="roleID">
-                <option value="ADMIN">ADMIN</option>
-                <option value="USUARIO">USUARIO</option>
-                <option value="USUARIOCONPRIVILEGIOS">USUARIO CON PRIVILEGIOS</option>
-             </select>
-            </div>
-
 
             <div>
                 Estoy de acuerdo con <a href="#">Terminos y condiciones</a>

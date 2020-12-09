@@ -46,14 +46,15 @@ export class LoginComponent {
       complete: () => (this.updateAddress()),
     });
     //QUEDARIA DIFERENCIAR QUE PONER EN CADA VISTA 
+    /*
     if(this.roleID=="1"){
-      this.router.navigate(['vistaAdmin'])
+      this.router.navigate(['ver-reuniones'])
     }else if(this.roleID=="2"){
       this.router.navigate(['vistaUsuarioPrivilegiado'])
     }else{
       this.router.navigate(['vistaUsuario'])
     }
-      
+      */
     
   }
   

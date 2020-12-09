@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UsuarioDto } from '../common/usuario.dto';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ReunionService } from '../services/reunion.service';
 
 
 @Injectable({
@@ -11,17 +12,21 @@ import { map } from 'rxjs/operators';
 export class UsuarioService {
   postId: any;
   errorMessage: any;
-  constructor(private readonly http: HttpClient) {
+  constructor(private servicioReunion: ReunionService, private readonly http: HttpClient) {
+    
   }
 
 //
   getLogin(usuario: UsuarioDto): any {
-    return this.http.post<any>(`https://siget-equipo2.herokuapp.com/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
+    var aux;
+    aux=this.http.post<any>(`http://localhost:8080/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
+    this.servicioReunion.getByAsistentes(aux.nombre,aux.roleID);
+    return aux;
   }
 
 
   getAll(): Observable<UsuarioDto[]> {
-    return this.http.get<any>(`https://siget-equipo2.herokuapp.com/usuarios/getAll`)
+    return this.http.get<any>(`http://localhost:8080/usuarios/getAll`)
     .pipe(
       map((usuarioDto: UsuarioDto[]) => {
         return usuarioDto;
@@ -30,7 +35,7 @@ export class UsuarioService {
   }
 
   createUsuario(usuario: UsuarioDto): any {
-    return this.http.post<any>(`https://siget-equipo2.herokuapp.com/usuarios/createUsuario?username=${usuario.username}&password=${usuario.password}&roleID=${usuario.roleID}&nombre=${usuario.nombre}&apellidos=${usuario.apellidos}&email=${usuario.email}&telefono=${usuario.telefono}
+    return this.http.post<any>(`http://localhost:8080/usuarios/createUsuario?username=${usuario.username}&password=${usuario.password}&roleID=${usuario.roleID}&nombre=${usuario.nombre}&apellidos=${usuario.apellidos}&email=${usuario.email}&telefono=${usuario.telefono}
     `, {}).subscribe({
       next: data => {
           this.postId = data.id;
