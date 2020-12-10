@@ -26,22 +26,23 @@ export class UsuarioService {
       usuarioGlobal = res;
     });
     localStorage.setItem("roleID", usuarioGlobal.roleID);
-    var a = this.http.post<any>(`http://localhost:8080/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
-    return a;
+    return this.http.post<any>(`https://siget-grupo2.herokuapp.com/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
+
   }
 
 
   getAll(): Observable<UsuarioDto[]> {
-    return this.http.get<any>(`http://localhost:8080/usuarios/getAll`)
-      .pipe(
-        map((usuarioDto: UsuarioDto[]) => {
-          return usuarioDto;
-        })
-      );
+
+    return this.http.get<any>(`https://siget-grupo2.herokuapp.com/usuarios/getAll`)
+    .pipe(
+      map((usuarioDto: UsuarioDto[]) => {
+        return usuarioDto;
+      })
+    );
   }
 
   createUsuario(usuario: UsuarioDto): any {
-    return this.http.post<any>(`http://localhost:8080/usuarios/createUsuario?username=${usuario.username}&password=${usuario.password}&roleID=${usuario.roleID}&nombre=${usuario.nombre}&apellidos=${usuario.apellidos}&email=${usuario.email}&telefono=${usuario.telefono}
+    return this.http.post<any>(`https://siget-grupo2.herokuapp.com/usuarios/createUsuario?username=${usuario.username}&password=${usuario.password}&nombre=${usuario.nombre}&apellidos=${usuario.apellidos}&email=${usuario.email}&telefono=${usuario.telefono}
     `, {}).subscribe({
       next: data => {
         this.postId = data.id;
@@ -54,4 +55,3 @@ export class UsuarioService {
   }
 
 }
-

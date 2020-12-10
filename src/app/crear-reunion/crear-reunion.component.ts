@@ -25,8 +25,7 @@ export class CrearReunionComponent implements OnInit {
   usuariosElegidos: UsuarioDto[] = [];
   indexAdd: number = null;
   indexDelete: number = null;
-
-
+  url: string;
 
   ngOnInit(): void{
         this.usuarioServicio.getAll().subscribe({
@@ -39,8 +38,7 @@ export class CrearReunionComponent implements OnInit {
       complete: () => (console.log("OK")),
     });
   }
-
-
+  
   reunion(): void {
     console.log(this.asistentes);
 

@@ -146,6 +146,7 @@ export class VerReunionesComponent implements OnInit {
 
         this.reunionService.deleteByHoraInicio(reun)
 
+
         window.location.reload();//Reload windows provisional y con comportamiento erratico
 
       } else {
@@ -165,12 +166,12 @@ export class VerReunionesComponent implements OnInit {
       }
 
       alert('Tema: ' + clickInfo.event.title + " \n"
-        + "Fecha y hora de inicio: " + fechainici + "\n"
-        + "Fecha y hora de final: " + fechafinal + "\n"
-        + "Convocante: " + convo + "\n"
-        + "url: " + url + "\n"
-        + "Assistentes: " + assis + "\n"
-        + "Descripcion: " + desc)
+      +"Fecha y hora de inicio: "+fechainici+"\n"
+      +"Fecha y hora de final: " +fechafinal+"\n"
+      +"Convocante: "+convo+"\n"
+      +"Assistentes: "+assis+"\n"
+      +"URL: "+url+"\n"
+      +"Descripcion: "+desc)
     }
 
 
