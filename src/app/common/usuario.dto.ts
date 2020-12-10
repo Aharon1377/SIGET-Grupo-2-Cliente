@@ -8,6 +8,7 @@ export class UsuarioDto {
   apellidos: string;
   email: string;
   telefono: number;
+  roleID: string;
 
   
 }

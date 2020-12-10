@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioDto } from '../common/usuario.dto';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { ReunionService } from '../services/reunion.service';
+var usuarioGlobal;
 
 @Injectable({
   providedIn: 'root'
@@ -11,36 +12,46 @@ import { map } from 'rxjs/operators';
 export class UsuarioService {
   postId: any;
   errorMessage: any;
-  constructor(private readonly http: HttpClient) {
+  constructor(private servicioReunion: ReunionService, private readonly http: HttpClient) {
+
   }
 
-//
+  getId(usuario: UsuarioDto){
+    return this.http.get(`http://localhost:8080/usuarios/getID?username=${usuario.username}`, {});
+  }
+
   getLogin(usuario: UsuarioDto): any {
-    return this.http.post<any>(`https://siget-equipo2.herokuapp.com/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
+    
+    this.getId(usuario).subscribe((res: UsuarioDto) => {
+      usuarioGlobal = res;
+    });
+    localStorage.setItem("roleID", usuarioGlobal.roleID);
+    var a = this.http.post<any>(`http://localhost:8080/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
+    return a;
   }
 
 
   getAll(): Observable<UsuarioDto[]> {
-    return this.http.get<any>(`https://siget-equipo2.herokuapp.com/usuarios/getAll`)
-    .pipe(
-      map((usuarioDto: UsuarioDto[]) => {
-        return usuarioDto;
-      })
-    );
+    return this.http.get<any>(`http://localhost:8080/usuarios/getAll`)
+      .pipe(
+        map((usuarioDto: UsuarioDto[]) => {
+          return usuarioDto;
+        })
+      );
   }
 
   createUsuario(usuario: UsuarioDto): any {
-    return this.http.post<any>(`https://siget-equipo2.herokuapp.com/usuarios/createUsuario?username=${usuario.username}&password=${usuario.password}&nombre=${usuario.nombre}&apellidos=${usuario.apellidos}&email=${usuario.email}&telefono=${usuario.telefono}
+    return this.http.post<any>(`http://localhost:8080/usuarios/createUsuario?username=${usuario.username}&password=${usuario.password}&roleID=${usuario.roleID}&nombre=${usuario.nombre}&apellidos=${usuario.apellidos}&email=${usuario.email}&telefono=${usuario.telefono}
     `, {}).subscribe({
       next: data => {
-          this.postId = data.id;
+        this.postId = data.id;
       },
       error: error => {
-          this.errorMessage = error.message;
-          console.error('There was an error!', error);
+        this.errorMessage = error.message;
+        console.error('There was an error!', error);
       }
-  });
+    });
   }
-  
+
 }
 
