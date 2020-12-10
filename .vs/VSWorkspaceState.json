@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\common",
+    "\\src\\app\\login",
+    "\\src\\app\\registro",
+    "\\src\\app\\services",
+    "\\src\\app\\ver-reuniones",
+    "\\src\\app\\ver-reuniones\\ver-reuniones"
+  ],
+  "SelectedNode": "\\src\\app\\ver-reuniones\\ver-reuniones\\ver-reuniones.component.ts",
+  "PreviewInSolutionExplorer": false
+}

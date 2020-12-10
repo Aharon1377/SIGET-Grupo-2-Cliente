@@ -18,6 +18,7 @@ export class CrearReunionComponent implements OnInit {
   horaInicio: string;
   asistentes: string[] = [];
   convocante: string;
+  url: string;
   respuesta: ReunionDto;
   nombreUsuario = localStorage.getItem("name");
   usuariosRegistrados: UsuarioDto[];

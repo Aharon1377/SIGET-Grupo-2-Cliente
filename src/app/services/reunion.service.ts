@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { ReunionDto } from '../common/reunion.dto';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,21 +19,20 @@ export class ReunionService {
   postId;
   errorMessage;
 
- 
-
-  getByAsistentes(name: string): Observable<ReunionDto[]> {
-    return this.http.get<any>(`https://siget-grupo2.herokuapp.com/reuniones/get?asistentes=${name}`)
-    .pipe(
-      map((reunionesDto: ReunionDto[]) => {
-        console.log(reunionesDto);
-        return reunionesDto;
-      })
-    );
+  getByAsistentes(name: string, rol: string): Observable<ReunionDto[]> {
+      return this.http.get<any>(`https://siget-grupo2.herokuapp.com/reuniones/get?asistentes=${name}`)
+        .pipe(
+          map((reunionesDto: ReunionDto[]) => {
+            console.log(reunionesDto);
+            return reunionesDto;
+          })
+        );
   }
 
 
 
   deleteByHoraInicio(reunion: ReunionDto) {
+    
     this.http.post<any>(`https://siget-grupo2.herokuapp.com/reuniones/delete?horaInicio=${reunion.horaInicio}`, { title: 'Angular POST delete' }).subscribe({
         next: data => {
             this.postId = data.id;
@@ -41,8 +41,9 @@ export class ReunionService {
             this.errorMessage = error.message;
             console.error('There was an error!', error);
         }
+
     })
-}
+  }
 
 
 

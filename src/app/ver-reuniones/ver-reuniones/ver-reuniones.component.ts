@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventApi, EventClickArg } from '@fullcalendar/angular';
 import { createEventId } from 'src/app/event-utils';
-import {  EventInput } from '@fullcalendar/core';
+import { EventInput } from '@fullcalendar/core';
 import { ReunionDto } from 'src/app/common/reunion.dto';
 import { ReunionService } from 'src/app/services/reunion.service';
 
@@ -19,7 +19,7 @@ export class VerReunionesComponent implements OnInit {
 
   reuniones: ReunionDto[];
   nombreUsuario = localStorage.getItem("name");
-  loading=false;
+  loading = false;
   eventGuid = 0;
   eventosReuniones: EventInput[] = [];
   TODAY_STR = new Date().toISOString().replace(/T.*$/, ''); // YYYY-MM-DD of today
@@ -28,9 +28,10 @@ export class VerReunionesComponent implements OnInit {
   calendarVisible: boolean;
 
   ngOnInit(): void {
-
-    this.reunionService
-     .getByAsistentes(localStorage.getItem("name"))
+    //VER COMO METERTE SEGUN EL ROL
+    /*
+      this.reunionService
+     .getByAdmin()
      .subscribe({
       next: (reunionesReceived: ReunionDto[]) => {
         this.reuniones = reunionesReceived;
@@ -42,31 +43,46 @@ export class VerReunionesComponent implements OnInit {
       complete: () => (this.updateCalendar()),
     });
 
-    
+    */
+    this.reunionService
+      .getByAsistentes(localStorage.getItem("name"), localStorage.getItem("roleID"))
+      .subscribe({
+        next: (reunionesReceived: ReunionDto[]) => {
+          this.reuniones = reunionesReceived;
+          console.log(this.reuniones);
+        },
+        error: (err) => {
+          console.error(err);
+        },
+        complete: () => (this.updateCalendar()),
+      });
+
+
+
   }
-  
+
 
   updateCalendar(): void {
     this.reuniones.forEach(reunion => {
       console.log(reunion.temas);
-      let evento: EventInput = 
-        {
-          id: createEventId(),
-          title: reunion.temas,
-          start: new Date(reunion.horaInicio),
-          end: new Date(reunion.horaFin),
-        }
+      let evento: EventInput =
+      {
+        id: createEventId(),
+        title: reunion.temas,
+        start: new Date(reunion.horaInicio),
+        end: new Date(reunion.horaFin),
+      }
       this.eventosReuniones.push(evento);
       console.log(this.eventosReuniones);
     });
     this.calendarVisible = true;
-    this.calendarOptions= {
+    this.calendarOptions = {
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek'
       },
-      buttonText:{
+      buttonText: {
         'today': 'Hoy',
         'dayGridMonth': 'Mes',
         'timeGridWeek': 'Semana'
@@ -110,44 +126,45 @@ export class VerReunionesComponent implements OnInit {
 
   handleEventClick(clickInfo: EventClickArg) {
     //Implementar si queremos que haga algo al hacer click en la reunion en el calendario.    
-    
-    if(this.deleteboolean==true){
 
-    var fecha_final = clickInfo.event.startStr.substring(5,7)
-    +"/"+clickInfo.event.startStr.substring(8,10)
-    +"/"+clickInfo.event.startStr.substring(0,4)
-    +" "+clickInfo.event.startStr.substring(11,16)
+    if (this.deleteboolean == true) {
 
-    
-    for (let i = 0; i < this.reuniones.length; i++){
-      if(this.reuniones[i].horaInicio==fecha_final){
-        var reun = this.reuniones[i]
+      var fecha_final = clickInfo.event.startStr.substring(5, 7)
+        + "/" + clickInfo.event.startStr.substring(8, 10)
+        + "/" + clickInfo.event.startStr.substring(0, 4)
+        + " " + clickInfo.event.startStr.substring(11, 16)
+
+
+      for (let i = 0; i < this.reuniones.length; i++) {
+        if (this.reuniones[i].horaInicio == fecha_final) {
+          var reun = this.reuniones[i]
+        }
       }
-    }
-    
-    if(reun.convocante==localStorage.getItem("name")){
-          alert("Borrando") 
 
-          this.reunionService.deleteByHoraInicio(reun)
+      if (reun.convocante == localStorage.getItem("name")) {
+        alert("Borrando")
 
-          window.location.reload();//Reload windows provisional y con comportamiento erratico
+        this.reunionService.deleteByHoraInicio(reun)
 
-    }else{
-      alert("Imposible borrar, no eres el usuario que ha creado esta reunion")
-    }
-      
-    }else{
-      for (let i = 0; i < this.reuniones.length; i++){
-        if(this.reuniones[i].temas==clickInfo.event.title){
+
+        window.location.reload();//Reload windows provisional y con comportamiento erratico
+
+      } else {
+        alert("Imposible borrar, no eres el usuario que ha creado esta reunion")
+      }
+
+    } else {
+      for (let i = 0; i < this.reuniones.length; i++) {
+        if (this.reuniones[i].temas == clickInfo.event.title) {
           var convo = this.reuniones[i].convocante
-          var url = this.reuniones[i].url  
+          var url = this.reuniones[i].url
           var assis = this.reuniones[i].asistentes
           var desc = this.reuniones[i].descripcion
           var fechainici = this.reuniones[i].horaInicio
           var fechafinal = this.reuniones[i].horaFin
         }
       }
-      
+
       alert('Tema: ' + clickInfo.event.title + " \n"
       +"Fecha y hora de inicio: "+fechainici+"\n"
       +"Fecha y hora de final: " +fechafinal+"\n"
@@ -156,7 +173,7 @@ export class VerReunionesComponent implements OnInit {
       +"URL: "+url+"\n"
       +"Descripcion: "+desc)
     }
-    
+
 
   }
 
@@ -169,16 +186,16 @@ export class VerReunionesComponent implements OnInit {
   }
 
   onClickMe() {
-    
-    if(this.deleteboolean==false){
+
+    if (this.deleteboolean == false) {
       this.deleteboolean = true
       alert("Haz click en alguna reunion del calendario para borrarla")
-    }else{
+    } else {
       this.deleteboolean = false
       alert("Borrado en click desactivado")
     }
 
-    
+
   }
 
 }
