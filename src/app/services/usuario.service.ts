@@ -4,7 +4,6 @@ import { UsuarioDto } from '../common/usuario.dto';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ReunionService } from '../services/reunion.service';
-var usuarioGlobal;
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +15,18 @@ export class UsuarioService {
 
   }
 
+  private usuarioGlobal:UsuarioDto;
+
   getId(usuario: UsuarioDto){
-    return this.http.get(`http://localhost:8080/usuarios/getID?username=${usuario.username}`, {});
+    return this.http.get(`https://siget-grupo2.herokuapp.com/usuarios/getID?username=${usuario.username}`, {});
   }
 
   getLogin(usuario: UsuarioDto): any {
     
     this.getId(usuario).subscribe((res: UsuarioDto) => {
-      usuarioGlobal = res;
+      this.usuarioGlobal = res;
     });
-    localStorage.setItem("roleID", usuarioGlobal.roleID);
+    localStorage.setItem("roleID", this.usuarioGlobal.roleID);
     return this.http.post<any>(`https://siget-grupo2.herokuapp.com/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
 
   }
