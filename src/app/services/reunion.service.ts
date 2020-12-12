@@ -14,13 +14,13 @@ export class ReunionService {
   }
 
   crear_reunion(reunion: ReunionDto): any {
-    return this.http.post<any>(`https://siget-grupo2.herokuapp.com/reuniones/create?temas=${reunion.temas}&descripcion=${reunion.descripcion}&horaInicio=${reunion.horaInicio}&horaFin=${reunion.horaFin}&asistentes=${reunion.asistentes}&convocante=${reunion.convocante}&url=${reunion.url}`, {});
+    return this.http.post<any>(`/api/reuniones/create?temas=${reunion.temas}&descripcion=${reunion.descripcion}&horaInicio=${reunion.horaInicio}&horaFin=${reunion.horaFin}&asistentes=${reunion.asistentes}&convocante=${reunion.convocante}&url=${reunion.url}`, {});
   }
   postId;
   errorMessage;
 
   getByAsistentes(name: string, rol: string): Observable<ReunionDto[]> {
-      return this.http.get<any>(`https://siget-grupo2.herokuapp.com/reuniones/get?asistentes=${name}`)
+      return this.http.get<any>(`/api/reuniones/get?asistentes=${name}`)
         .pipe(
           map((reunionesDto: ReunionDto[]) => {
             console.log(reunionesDto);
@@ -33,7 +33,7 @@ export class ReunionService {
 
   deleteByHoraInicio(reunion: ReunionDto) {
     
-    this.http.post<any>(`https://siget-grupo2.herokuapp.com/reuniones/delete?horaInicio=${reunion.horaInicio}`, { title: 'Angular POST delete' }).subscribe({
+    this.http.post<any>(`/api/reuniones/delete?horaInicio=${reunion.horaInicio}`, { title: 'Angular POST delete' }).subscribe({
         next: data => {
             this.postId = data.id;
         },
