@@ -15,28 +15,27 @@ export class UsuarioService {
 
   }
 
-  private usuarioGlobal:UsuarioDto;
+  public usuarioGlobal:UsuarioDto;
 
   getId(usuario: UsuarioDto){
-    return this.http.get(`http://localhost:8080/usuarios/login?username=${​​usuario.username}​​&password=${​​usuario.password}​​`, {});
-    //return this.http.get(`https://siget-grupo2.herokuapp.com/usuarios/getID?username=${usuario.username}`, {});
+    return this.http.get(`https://siget-equipo2.herokuapp.com/api/usuarios/getID?username=${usuario.username}`, {});
+
   }
 
   getLogin(usuario: UsuarioDto): any {
+    
+    this.usuarioGlobal=usuario;
     
     this.getId(usuario).subscribe((res: UsuarioDto) => {
       this.usuarioGlobal = res;
     });
     localStorage.setItem("roleID", this.usuarioGlobal.roleID);
-    return this.http.post<any>(`http://localhost:8080/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
-    //return this.http.post<any>(`https://siget-grupo2.herokuapp.com/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
-
+    return this.http.post<any>(`https://siget-equipo2.herokuapp.com/api/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
   }
 
 
   getAll(): Observable<UsuarioDto[]> {
-    return this.http.get<any>(`http://localhost:8080/usuarios/getAll`)
-    //return this.http.get<any>(`https://siget-grupo2.herokuapp.com/usuarios/getAll`)
+    return this.http.get<any>(`https://siget-equipo2.herokuapp.com/api/usuarios/getAll`)
     .pipe(
       map((usuarioDto: UsuarioDto[]) => {
         return usuarioDto;
@@ -45,7 +44,7 @@ export class UsuarioService {
   }
 
   createUsuario(usuario: UsuarioDto): any {
-    return this.http.post<any>(`https://siget-grupo2.herokuapp.com/usuarios/createUsuario?username=${usuario.username}&password=${usuario.password}&nombre=${usuario.nombre}&apellidos=${usuario.apellidos}&email=${usuario.email}&telefono=${usuario.telefono}
+    return this.http.post<any>(`https://siget-equipo2.herokuapp.com/api/usuarios/createUsuario?username=${usuario.username}&password=${usuario.password}&nombre=${usuario.nombre}&apellidos=${usuario.apellidos}&email=${usuario.email}&telefono=${usuario.telefono}
     `, {}).subscribe({
       next: data => {
         this.postId = data.id;

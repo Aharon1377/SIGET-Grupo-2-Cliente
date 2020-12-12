@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target":   "https://siget-equipo2.herokuapp.com",
+        "secure":   false,
+        "logLevel": "debug"
+    }    
+}
