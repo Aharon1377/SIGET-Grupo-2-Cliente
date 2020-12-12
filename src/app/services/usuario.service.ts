@@ -15,13 +15,15 @@ export class UsuarioService {
 
   }
 
-  private usuarioGlobal:UsuarioDto;
+  public usuarioGlobal:UsuarioDto;
 
   getId(usuario: UsuarioDto){
     return this.http.get(`https://siget-grupo2.herokuapp.com/usuarios/getID?username=${usuario.username}`, {});
   }
 
   getLogin(usuario: UsuarioDto): any {
+    
+    this.usuarioGlobal=usuario;
     
     this.getId(usuario).subscribe((res: UsuarioDto) => {
       this.usuarioGlobal = res;
