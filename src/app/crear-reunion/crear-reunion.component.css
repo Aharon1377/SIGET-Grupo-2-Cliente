@@ -11,18 +11,23 @@
     overflow:hidden;
   }
 
-
   .container {
     width: 80%;
     margin: auto;
     overflow:hidden;
   }
   header {
-    background: rgba(0,0,0,0.9);
-
+    background: rgba(34, 40, 43, 0.9);
     width: 100%;
     position: fixed;
     z-index: 10;
+  }
+
+  body {
+    background-position: 100%;
+    padding-top: 0px;
+    background-image: url(imagen.jpg);
+    background-size: 100%;
   }
   
   nav {
@@ -50,3 +55,26 @@
     padding-top: 80px;
   }
   
+  #crearReunion{
+    color: white;
+    border-color:#2b7e4d;
+    width:25%;  
+    font-size: 15px;
+    margin: 0px;
+    text-align: center;
+    border: 2px;
+    padding: 10px;
+    outline: none;
+    background: #5fca8c;
+    border-radius: 18px;
+    transition: 0.25s;
+    cursor: pointer;
+    display: inline;
+    float:center;
+  }
+  
+  #crearReunion:hover{
+    background: #398558;
+    color: whitesmoke;
+    transform: scale(0.9);
+  }
