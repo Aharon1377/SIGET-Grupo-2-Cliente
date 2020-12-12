@@ -10,11 +10,10 @@
   </section>
 
 </header>
-
+<body>
 <div class="jumbotron jumbotron-fluid">
   <div style="text-align: center;">
       <div class="container">
-      <h1 class="display-10">CREAR REUNIÓN</h1>
       </div>
   </div>
 </div>
@@ -22,7 +21,7 @@
 
 <div class="container">
 
-
+  <br><br><br>
           <div class="form-group">
             <label for="temas">Nombre reunión</label>
             <br>
@@ -31,7 +30,6 @@
             name="temas"
             required="temas"/>
           </div>
-          <br> <br>
           <div class="form-group">
               <label for="descripcion">Descripcion</label>
               <br>
@@ -59,15 +57,12 @@
                   <input type="datetime-local" class="form-control" [(ngModel)]="horaFin" name="horaFin" required="horaFin">
               </div>
           </div>
-
-          <br>
-
           <div class="form-group">
             <div class="row">
               <div class="col">
                 <div class="row">
                   <label for="asistentes">Asistentes Disponibles</label>
-                  <select style="height: 200px;" class="custom-select" id="asistentes" required multiple="multiple"multiple>
+                  <select style="height: 150px;" class="custom-select" id="asistentes" required multiple="multiple"multiple>
                       <option selected disabled value="">Elige...</option>
                       <option
                       *ngFor= "let usuariosRegistrado of usuariosRegistrados, let indexOfElement = index;"
@@ -88,7 +83,7 @@
               <div class="col">
                 <div class="row">
                   <label for="asistentes">Asistentes Añadidos</label>
-                <select class="custom-select" style="height: 200px;" id="asistentes" required multiple="multiple"multiple>
+                <select class="custom-select" style="height: 150px;" id="asistentes" required multiple="multiple"multiple>
                     <option selected disabled value="">Asistentes elegidos...</option>
                     <option
                      *ngFor= "let usuariosElegido of usuariosElegidos, let indexOfElement = index"
@@ -114,11 +109,6 @@
 
 
   <br>
-  <button type="submit" class="btn btn-primary" (click)="reunion()">Crear reunión</button>
-
+  <button type="button" name="" value="crearReunion" id="crearReunion" class="btn btn-primary" (click)="reunion()">Crear reunión</button>
 </div>
-
-
-
-
-
+</body>
