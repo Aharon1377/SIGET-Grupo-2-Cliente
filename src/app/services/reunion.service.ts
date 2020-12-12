@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ReunionDto } from '../common/reunion.dto';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -32,7 +30,6 @@ export class ReunionService {
 
 
   deleteByHoraInicio(reunion: ReunionDto) {
-    
     this.http.post<any>(`https://siget-equipo2.herokuapp.com/api/reuniones/delete?horaInicio=${reunion.horaInicio}`, { title: 'Angular POST delete' }).subscribe({
         next: data => {
             this.postId = data.id;

@@ -19,6 +19,7 @@ export class UsuarioService {
 
   getId(usuario: UsuarioDto){
     return this.http.get(`https://siget-equipo2.herokuapp.com/api/usuarios/getID?username=${usuario.username}`, {});
+
   }
 
   getLogin(usuario: UsuarioDto): any {
@@ -30,12 +31,10 @@ export class UsuarioService {
     });
     localStorage.setItem("roleID", this.usuarioGlobal.roleID);
     return this.http.post<any>(`https://siget-equipo2.herokuapp.com/api/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
-
   }
 
 
   getAll(): Observable<UsuarioDto[]> {
-
     return this.http.get<any>(`https://siget-equipo2.herokuapp.com/api/usuarios/getAll`)
     .pipe(
       map((usuarioDto: UsuarioDto[]) => {
