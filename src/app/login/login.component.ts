@@ -32,6 +32,7 @@ export class LoginComponent {
       apellidos: "", 
       email : "", 
       telefono: 1,
+      roleID: "",
     }
     this.servicioUsuario
       .getLogin(usuario)
@@ -52,7 +53,8 @@ export class LoginComponent {
     if(this.respuesta){
       localStorage.setItem("name", `${this.email}`);
       this.router.navigate(['reuniones']);
-      this.invalid = false;
+      this.invalid=false;
+
     }else{
       this.invalid = true;
     }
