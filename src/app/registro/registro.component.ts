@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../services/usuario.service';
 import { UsuarioDto } from 'src/app/common/usuario.dto';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -15,8 +16,7 @@ export class RegistroComponent implements OnInit {
     nombre: string;
     apellidos: string;
     email: string;
-  telefono: number;
-  roleID: string;
+    telefono: number;
 
     constructor(private servicioUsuario: UsuarioService) { }
 
@@ -35,8 +35,7 @@ export class RegistroComponent implements OnInit {
             nombre: this.nombre,
             apellidos: this.apellidos,
             email: this.email,
-          telefono: this.telefono,
-            roleID: this.roleID,
+            telefono: this.telefono,
         }
         //if( !(this.password.length<8) && !(this.password===this.password.toLowerCase()) && !(this.password === this.password.toUpperCase()) && !(this.password.search(/[0-9]/)<0) ){
         if ((this.password.length >= 8) && (this.password !== this.password.toLowerCase()) && (this.password !==this.password.toUpperCase())) {

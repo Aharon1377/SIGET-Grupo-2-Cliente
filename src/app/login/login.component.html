@@ -1,8 +1,19 @@
 <!-- login.component.html -->
+<html lang="en" dir="ltr">
+<head>
+  <h1>SIGET Equipo 1</h1>
+  <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
 
-<div class="login">
+<body>
+  <div class="cabecera"></div>
+  <div class="login">
     <form class="custom-form">
-      <h1>Login</h1>
+     
+      <h1>LOGIN</h1>
       <input
         type="email"
         [(ngModel)]="email"
@@ -17,18 +28,17 @@
         placeholder="Password"
         required="required"
       />
-      <button type="submit" (click)="login()">Log in</button>
+      <button id="login" type="submit" (click)="login()">Log in</button>
       <br>
+      <button id="registro" type="submit" href="registro">Registro</button>
 
       <div class="row" *ngIf="submitted && invalid">
         <label>Error en la autenticación</label>
       </div>
-      <ul>
-        <li>
-          <a href="registro">Crear usuario</a>
-        </li>
-    </ul>
+      
       
 
     </form>
   </div>
+</body>
+</html>
