@@ -1,6 +1,6 @@
 {
     "/api/*": {
-        "target":   "https://siget-equipo2-cliente.herokuapp.com",
+        "target":   "https://siget-equipo2.herokuapp.com",
         "secure":   false,
         "logLevel": "debug"
     }    
