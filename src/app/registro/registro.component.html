@@ -44,12 +44,18 @@
             <input type="telefono" [(ngModel)]="telefono" name="telefono" placeholder="Telefono" required="telefono" />
             <br>
 
-            <label for="Rolsignup" id="roleID">Tu Rol </label>
-            <div id="roleID" class="selectrol">
-            <select id="roleID">
-            <option value="ADMIN">ADMIN</option>
-            <option value="ASISTENTE">ASISTENTE</option>
-            </select>
+            <label for="Rolsignup" [(ngModel)]="roleID">Tu Rol </label>
+
+            <div [(ngModel)]="roleID" class="selectrol">
+
+                <select [(ngModel)]="roleID">
+
+                <option value="1">ADMIN</option>
+
+                <option value="3">ASISTENTE</option>
+
+                </select>
+
             </div>
 
 
