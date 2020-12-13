@@ -84,3 +84,9 @@
   #registro:hover{
       background-color:rgb(61, 65, 59);
   }
+  @media screen and (min-width: 400px) {​​​​
+
+    body{
+      background: none;
+    }
+  }
