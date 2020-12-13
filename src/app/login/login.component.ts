@@ -32,7 +32,7 @@ export class LoginComponent {
       apellidos: "", 
       email : "", 
       telefono: 1,
-      roleID: "",
+      roleID: ""
     }
     this.servicioUsuario
       .getLogin(usuario)

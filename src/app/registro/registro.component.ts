@@ -38,7 +38,8 @@ export class RegistroComponent implements OnInit {
             apellidos: this.apellidos,
             email: this.email,
             telefono: this.telefono,
-            roleID: this.roleID,
+            roleID: this.roleID
+
         }
         //if( !(this.password.length<8) && !(this.password===this.password.toLowerCase()) && !(this.password === this.password.toUpperCase()) && !(this.password.search(/[0-9]/)<0) ){
         if ((this.password.length >= 8) && (this.password !== this.password.toLowerCase()) && (this.password !==this.password.toUpperCase())) {
