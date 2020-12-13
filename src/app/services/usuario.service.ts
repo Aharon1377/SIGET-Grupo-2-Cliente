@@ -28,8 +28,8 @@ export class UsuarioService {
     
     this.getId(usuario).subscribe((res: UsuarioDto) => {
       this.usuarioGlobal = res;
+      localStorage.setItem("roleID", this.usuarioGlobal.roleID);
     });
-    localStorage.setItem("roleID", this.usuarioGlobal.roleID);
     return this.http.post<any>(`https://siget-equipo2.herokuapp.com/api/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
   }
 
