@@ -4,7 +4,6 @@ import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 import { UsuarioDto } from '../common/usuario.dto';
 import { UsuarioService } from '../services/usuario.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: "app-login",

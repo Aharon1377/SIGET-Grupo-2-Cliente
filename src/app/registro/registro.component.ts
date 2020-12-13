@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../services/usuario.service';
 import { UsuarioDto } from 'src/app/common/usuario.dto';
-import { FormsModule } from '@angular/forms';
-
 
 @Component({
     selector: 'app-registro',

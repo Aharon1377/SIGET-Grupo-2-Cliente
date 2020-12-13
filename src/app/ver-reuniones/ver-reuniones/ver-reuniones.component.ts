@@ -4,7 +4,6 @@ import { createEventId } from 'src/app/event-utils';
 import { EventInput } from '@fullcalendar/core';
 import { ReunionDto } from 'src/app/common/reunion.dto';
 import { ReunionService } from 'src/app/services/reunion.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ver-reuniones',
