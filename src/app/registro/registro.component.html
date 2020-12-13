@@ -7,19 +7,13 @@
     </title>
 </head>
 
-<div class="container">
-
     <body>
-        <section>
-
-            <div class="jumbotron jumbotron-fluid">
-                <div style="text-align: center;">
-                    <div class="container">
-                        <h1 class="display-10">Formulario de registro</h1>
-                    </div>
-                </div>
+            <div id="cabecera" class="jumbotron jumbotron-fluid">
+                
             </div>
-
+            <form class="register-form">
+                <h1 class="display-10">Formulario de registro</h1>
+            
             <label>Username:</label>
             <input type="username" [(ngModel)]="username" name="username" placeholder="Username" required="username" />
             <br>
@@ -46,25 +40,33 @@
             <input type="telefono" [(ngModel)]="telefono" name="telefono" placeholder="Telefono" required="telefono" />
             <br>
 
+            <label for="Rolsignup" id="roleID">Tu Rol </label>
+            <div id="rol">
+                <select [(ngModel)]="roleID" name="roleID">
+                    <option [ngValue]="1">ADMIN</option>
+                    <option [ngValue]="3">ASISTENTE</option>
+                </select>
+            </div>
+
 
             <div>
                 Estoy de acuerdo con <a href="#">Terminos y condiciones</a>
             </div>
             <br>
 
-            <button (click)="metodoRegistrar()"> Registrar </button>
-
+            <button id="register" (click)="metodoRegistrar()"> Registrar </button>
+        
             <div>
                 <br>
-                <a href="#">¿Ya tengo cuenta?</a>
-                <ul>
-                 <li style="float:right;"><a href="login">Volver a login</a></li>
- <              </ul>
+                <a id="cuenta" href="#">¿Ya tengo cuenta?</a>
+            
+                <a id="login" href="login">Volver a login</a>
+               
             </div>
-
-        </section>
+        </form>
+        
     </body>
 
-</div>
+
 
 </html>

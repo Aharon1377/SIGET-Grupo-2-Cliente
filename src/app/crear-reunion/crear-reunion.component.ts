@@ -18,14 +18,13 @@ export class CrearReunionComponent implements OnInit {
   horaInicio: string;
   asistentes: string[] = [];
   convocante: string;
+  url: string;
   respuesta: ReunionDto;
   nombreUsuario = localStorage.getItem("name");
   usuariosRegistrados: UsuarioDto[];
   usuariosElegidos: UsuarioDto[] = [];
   indexAdd: number = null;
   indexDelete: number = null;
-
-
 
   ngOnInit(): void{
         this.usuarioServicio.getAll().subscribe({
@@ -38,8 +37,7 @@ export class CrearReunionComponent implements OnInit {
       complete: () => (console.log("OK")),
     });
   }
-
-
+  
   reunion(): void {
     console.log(this.asistentes);
 
@@ -49,7 +47,8 @@ export class CrearReunionComponent implements OnInit {
       horaFin: this.horaFin.substring(5,7)+"/"+ this.horaFin.substring(8,10)+"/"+this.horaFin.substring(0,4)+" "+this.horaFin.substring(11,16),
       horaInicio: this.horaInicio.substring(5,7) +"/"+this.horaInicio.substring(8,10)+"/"+this.horaInicio.substring(0,4)+" "+this.horaInicio.substring(11,16),
       asistentes: this.asistentes,
-      convocante: this.nombreUsuario
+      convocante: this.nombreUsuario,
+      url: this.url
     };
 
     alert('Creando reunion')

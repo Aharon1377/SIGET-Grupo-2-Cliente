@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 import { UsuarioDto } from '../common/usuario.dto';
 import { UsuarioService } from '../services/usuario.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: "app-login",
@@ -27,10 +28,12 @@ export class LoginComponent {
     const usuario: UsuarioDto = {
       username: this.email,
       password: this.password,
+      roleID: "",
       nombre: "", 
       apellidos: "", 
       email : "", 
-      telefono: 1,
+      telefono: 1
+      
     }
     this.servicioUsuario
       .getLogin(usuario)
@@ -51,7 +54,8 @@ export class LoginComponent {
     if(this.respuesta){
       localStorage.setItem("name", `${this.email}`);
       this.router.navigate(['reuniones']);
-      this.invalid = false;
+      this.invalid=false;
+
     }else{
       this.invalid = true;
     }
