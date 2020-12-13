@@ -18,6 +18,7 @@ export class RegistroComponent implements OnInit {
     email: string;
     telefono: number;
     roleID: string;
+    creado: boolean;
 
     constructor(private servicioUsuario: UsuarioService) { }
 
@@ -38,16 +39,18 @@ export class RegistroComponent implements OnInit {
             email: this.email,
             telefono: this.telefono,
             roleID: this.roleID
+
         }
         //if( !(this.password.length<8) && !(this.password===this.password.toLowerCase()) && !(this.password === this.password.toUpperCase()) && !(this.password.search(/[0-9]/)<0) ){
         if ((this.password.length >= 8) && (this.password !== this.password.toLowerCase()) && (this.password !==this.password.toUpperCase())) {
             
             this.servicioUsuario.createUsuario(usuario);
             alert('Usuario creado')
+            this.creado=true;
            
         } else {
             alert('La contraseña debe tener como mínimo 8 caracteres, un mayúscula y un minúscula ')
-            
+            this.creado=false;
         }
     }
 
