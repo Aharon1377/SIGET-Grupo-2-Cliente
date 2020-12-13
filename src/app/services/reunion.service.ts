@@ -27,6 +27,16 @@ export class ReunionService {
         );
   }
 
+  getByAdmin(): Observable<ReunionDto[]> {
+    return this.http.get<any>(`https://siget-equipo2.herokuapp.com/api/reuniones/getAll?`)
+      .pipe(
+        map((reunionesDto: ReunionDto[]) => {
+          console.log(reunionesDto);
+          return reunionesDto;
+        })
+      );
+}
+
 
 
   deleteByHoraInicio(reunion: ReunionDto) {

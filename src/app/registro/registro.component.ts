@@ -13,11 +13,11 @@ export class RegistroComponent implements OnInit {
 
     username: string;
     password: string;
+    roleID: string;
     nombre: string;
     apellidos: string;
     email: string;
     telefono: number;
-    roleID: string;
     creado: boolean;
 
     constructor(private servicioUsuario: UsuarioService) { }
@@ -34,11 +34,12 @@ export class RegistroComponent implements OnInit {
         const usuario: UsuarioDto = {
             username: this.username,
             password: this.password,
+            roleID: this.roleID,
             nombre: this.nombre,
             apellidos: this.apellidos,
             email: this.email,
-            telefono: this.telefono,
-            roleID: this.roleID
+            telefono: this.telefono
+            
 
         }
         //if( !(this.password.length<8) && !(this.password===this.password.toLowerCase()) && !(this.password === this.password.toUpperCase()) && !(this.password.search(/[0-9]/)<0) ){

@@ -28,11 +28,12 @@ export class LoginComponent {
     const usuario: UsuarioDto = {
       username: this.email,
       password: this.password,
+      roleID: "",
       nombre: "", 
       apellidos: "", 
       email : "", 
-      telefono: 1,
-      roleID: ""
+      telefono: 1
+      
     }
     this.servicioUsuario
       .getLogin(usuario)

@@ -30,7 +30,7 @@ export class VerReunionesComponent implements OnInit {
 
   ngOnInit(): void {
     //VER COMO METERTE SEGUN EL ROL
-    /*
+    if(localStorage.getItem("roleID")=="1"){
       this.reunionService
      .getByAdmin()
      .subscribe({
@@ -43,9 +43,8 @@ export class VerReunionesComponent implements OnInit {
       },
       complete: () => (this.updateCalendar()),
     });
-
-    */
-    this.reunionService
+    }else{
+      this.reunionService
       .getByAsistentes(localStorage.getItem("name"), localStorage.getItem("roleID"))
       .subscribe({
         next: (reunionesReceived: ReunionDto[]) => {
@@ -57,6 +56,12 @@ export class VerReunionesComponent implements OnInit {
         },
         complete: () => (this.updateCalendar()),
       });
+
+    }
+      
+
+    
+    
 
 
 
