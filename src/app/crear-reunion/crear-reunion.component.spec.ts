@@ -1,7 +1,6 @@
-import {ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import {ComponentFixture, TestBed } from '@angular/core/testing';
 import {
-  HttpClientTestingModule,
-  HttpTestingController
+  HttpClientTestingModule
 } from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import { CrearReunionComponent } from './crear-reunion.component';
