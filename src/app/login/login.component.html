@@ -30,7 +30,7 @@
       />
       <button id="login" type="submit" (click)="login()">Log in</button>
       <br>
-      <button id="registro" type="submit" href="registro">Registro</button>
+      <button id="registro" type="submit" (click)="registrar()">Registro</button>
 
       <div class="row" *ngIf="submitted && invalid">
         <label>Error en la autenticación</label>
