@@ -42,14 +42,16 @@
     box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px
         rgba(0, 0, 0, 0.1);
     background: #ebf5fc;
+    float: center;
   }
 
   .custom-form input[type="email"]:hover, .custom-form input[type="password"]:hover {
-    width: 310px;
+    width: 80% auto;
     background: #d8d8d8;
     color: black;
-    transform: scale(0.9);
+    transform: scale(0.8);
     transition-duration: 0.2s;
+    float:center;
   }
   .custom-form button {
     text-transform: uppercase;
@@ -84,12 +86,12 @@
 
   @media (max-width: 768px) {
     * {
-      font-size: 10px;
+      font-size: 14px;
     }
   }
   @media (max-width: 768px) {
   .custom-form {
-    max-width: 70%;
+    max-width: 90%;
   }
   }
  
